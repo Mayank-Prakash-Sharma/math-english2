@@ -12,10 +12,17 @@ import { AppRoutingModule } from './app-routing.module';
 //Import HttpClientModule for accessing YT Channel and Firebase Database. Add it in imports section of  @NgModule too below. 
 import { HttpClientModule } from '@angular/common/http'; 
 
+//Import Firebase Module and environment file having our Firebase Config details for this app
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+
+//Importing the Firestore Modules that we need, e.g. Firestore Database
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFirestoreModule],
   providers: [
     StatusBar,
     SplashScreen,
