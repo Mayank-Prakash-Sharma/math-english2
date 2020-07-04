@@ -10,5 +10,34 @@
 </ion-header>
 
 <ion-content>
+   <!-- If there are no packages -->
+  <!-- We use async pipe because testPackages is an observable -->
+  <ion-grid *ngIf="!(testPackages | async) || (testPackages | async)?.length <= 0">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <p>There are no Test Pakages purchased by you. </p>
+        <ion-button routerLink="../home">Purchase Test Packages ...now give a link to purchase video classes page</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <!-- If there are packages -->
+  <!-- We use async pipe because testPackages is an observable -->
+  <ion-grid *ngIf="(testPackages | async)?.length > 0">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <ion-list>
+          <!-- We use async pipe because testPackages is an observable -->
+          <ion-item *ngFor="let package of (testPackages | async)" [routerLink]="['/', 'tests', 'test', package.id]" detail>   
+            <ion-label>
+              <p>{{ package.id }}</p>
+              <h2>{{ package.title }}</h2>
+              <p>{{ package.description }}</p>
+              <p>{{ package.price | currency: 'INR'}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

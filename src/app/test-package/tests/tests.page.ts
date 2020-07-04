@@ -12,6 +12,10 @@ import { Exams } from '../test-package.model';
 
 // Import and inject Service having my test packages and data model class
 import { TestsService } from './tests.service';
+import { TestPackage } from './tests.model';
+
+//Import Observable
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tests',
@@ -22,6 +26,9 @@ export class TestsPage implements OnInit {
 
   //For storing the data of the dynamic subject Id passed from the previous page
   loadedExam: Exams;
+  
+  //To store the Observable received from Firebase
+  private testPackages: Observable<TestPackage[]>;
 
   constructor(private route: ActivatedRoute, private navCtrl: NavController, private testPackageService: TestPackageService, private testsService: TestsService) { }
 
@@ -40,6 +47,9 @@ export class TestsPage implements OnInit {
       this.testsService.loadedExam1 = this.loadedExam;  
 
       console.log(this.testsService.loadedExam1);
+
+      //Store the observable received from Firebase Firestore in our local observable
+      this.testPackages = this.testsService.getPackages();
 
     });  
 
