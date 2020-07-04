@@ -1,0 +1,36 @@
+<ion-app>
+  <!-- Adding side drawer, i.e. hamburger menu STARTS-->
+  <ion-menu side="start" contentId="m1">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          Menu
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle> 
+         <ion-item lines="none" routerLink="/video-package-purchase">
+          <ion-icon name="business" slot="start"></ion-icon>
+          <ion-label>Buy Video Packages</ion-label>
+         </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle> 
+         <ion-item lines="none" routerLink="/test-package-purchase">
+          <ion-icon name="checkbox-outline" slot="start"></ion-icon>
+          <ion-label>Buy Test Packages</ion-label>
+         </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle> 
+          <ion-item lines="none" (click)="onLogout()" button>
+          <ion-icon name="exit" slot="start"></ion-icon>
+          <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <!-- Adding side drawer, i.e. hamburger menu ENDS-->
+  <ion-router-outlet id="m1"></ion-router-outlet>
+</ion-app>

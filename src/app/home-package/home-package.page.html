@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Side drawer/Hamburger Menu placeholder STARTS-->
+    <ion-buttons slot="start">
+      <ion-menu-button id="m1"></ion-menu-button>
+    </ion-buttons>
+    <!-- Side drawer/Hamburger Menu placeholder ENDS-->
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <!-- Quiz -->
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center> 
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Quiz title</ion-card-title>
+            <ion-card-subtitle>Dummy subtitle</ion-card-subtitle>
+          </ion-card-header>
+          <ion-img>Dummy image</ion-img>
+          <ion-card-content>Dummy content</ion-card-content>
+          <div>
+            <ion-button fill="clear" color="primary" [routerLink]="['/', 'tabs', 'test-package', 'tests', 'instructions', 'test']">
+              Start Quiz
+            </ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!-- Mock Test -->
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center> 
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Mock Test title</ion-card-title>
+            <ion-card-subtitle>Dummy subtitle</ion-card-subtitle>
+          </ion-card-header>
+          <ion-img>Dummy image</ion-img>
+          <ion-card-content>Dummy content</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!-- Video Class -->
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center> 
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Video Class title</ion-card-title>
+            <ion-card-subtitle>Dummy subtitle</ion-card-subtitle>
+          </ion-card-header>
+          <ion-img>Dummy image</ion-img>
+          <ion-card-content>Dummy content</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

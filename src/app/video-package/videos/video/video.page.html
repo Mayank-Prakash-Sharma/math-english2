@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- The title of the page will be the playlist name that was clicked on the previous page. -->
+    <ion-title>{{ loadedVideoPlaylist.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Iframe to showcase YouTube videos -->
+  <iframe width="100%" height="315" [src]="vidUrl" frameborder="0" allowfullscreen></iframe>
+
+  <!-- The rest of the videos in the playlist -->
+  <ion-list>
+    <button ion-item *ngFor="let video of videos | async" (click)="playVideo(video)">
+    <!-- <button ion-item *ngFor="let video of videos" (click)="playVideo(video)"> -->
+      <ion-thumbnail item-start>
+        <img [src]="video.snippet.thumbnails.standard.url">
+      </ion-thumbnail>
+      <h2>{{ video.snippet.title }} title</h2>
+      <p>{{ video.snippet.publishedAt | date: 'short' }} date</p>
+      <p>{{ video.snippet.description }} descrption</p>
+    </button>
+  </ion-list>
+</ion-content>

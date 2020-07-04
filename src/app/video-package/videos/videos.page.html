@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Adding back button - STARTS -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/video-package"></ion-back-button>
+    </ion-buttons>
+    <!-- Adding back button - ENDS -->
+    <!-- The title of the page will be the subject name that was clicked on the previous page. -->
+    <ion-title>{{ loadedVideoPackage.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- If there are no playlists -->
+  <ion-grid *ngIf="!loadedPlaylists || loadedPlaylists.length <= 0">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <p>There are no Video Playlists. </p>
+        <ion-button routerLink="../../../video-package-purchase">Purchase Video Packages ...now give a link to purchase video classes page</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- If there are playlists -->
+  <ion-grid *ngIf="loadedPlaylists.length > 0">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <ion-list>
+          <!-- Creating a for loop for the array containing our subject objects. 
+            Putting a router link to enable dynamic routing to the next page and passing the playlist id as url parameter. 
+            detail - it showcases an arrow in front of ion-items, which lets the user know that the item is clickable. -->
+          <ion-item *ngFor="let list of loadedPlaylists" [routerLink]="['/', 'tabs', 'video-package', 'videos', list.id]" detail> 
+            <ion-label>
+              <p>{{ list.id }}</p>
+              <h2>{{ list.title }}</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
