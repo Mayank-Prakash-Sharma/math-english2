@@ -11,9 +11,10 @@ export class TestPackageService {
   //The data of my Free Exams Folders
   private _freeExams: Exams[] = [
     new Exams('exam1', 'SSC', 'CGL'),
-    new Exams('exam2', 'SSC', 'CHSL'),
+    new Exams('English', 'SSC', 'CHSL'),
     new Exams('exam3', 'BANK', 'IBPS'),
     new Exams('exam4', 'BANK', 'SBI'),
+    new Exams('Demo Exam', 'demoexam', 'subexam')
   ];
 
   //getter function to get the data of my Free Exams Folders

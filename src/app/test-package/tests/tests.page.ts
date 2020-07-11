@@ -47,6 +47,11 @@ export class TestsPage implements OnInit {
       this.testsService.loadedExam1 = this.loadedExam;  
 
       console.log(this.testsService.loadedExam1);
+      console.log(this.testsService.loadedExam1.id);
+
+      //Set the reference of the collection choosen by the user in the previous page
+      this.testsService.setPackages();
+
 
       //Store the observable received from Firebase Firestore in our local observable
       this.testPackages = this.testsService.getPackages();

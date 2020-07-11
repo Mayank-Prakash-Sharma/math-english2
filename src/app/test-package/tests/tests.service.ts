@@ -10,6 +10,7 @@ import { map, take } from 'rxjs/operators';
 
 //Import the data model that defines the structure of our objects in Firestore Database
 import { TestPackage } from './tests.model';
+import { Identifiers } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,16 @@ import { TestPackage } from './tests.model';
 export class TestsService {
   //For storing the data of the dynamic exam Id passed from the previous page. I am basically doing this in .ts file. There i will just set the value of this variable. 
   loadedExam1: Exams;
-  
-  private exam = 'Demo Exam';  //hardcoding it for now
+
   private testPackageCollection:AngularFirestoreCollection<TestPackage>; //Will contain the reference to our Exam Collection
   private testPackages: Observable<TestPackage[]>;  //Will contain all the data of our Test Package documents within our Exam Collection
 
   constructor(private afs: AngularFirestore) { 
-    this.testPackageCollection = this.afs.collection<TestPackage>(this.exam);
+   }
+
+   //Set the values of the collection and the test packages within it based on what collection the user clicked in the previous page
+   setPackages() {
+    this.testPackageCollection = this.afs.collection<TestPackage>(this.loadedExam1.id);
     this.testPackages = this.testPackageCollection.snapshotChanges().pipe(
       map(tstPackages => {
         return tstPackages.map(tstPackage => {
