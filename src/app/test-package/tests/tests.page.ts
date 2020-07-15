@@ -38,7 +38,7 @@ export class TestsPage implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       //Adding an If check for scenarios where no dynamic attribute has been passed
       if (!paramMap.has('examId')) {
-        this.navCtrl.navigateBack('/tabs/exam-package');
+        this.navCtrl.navigateBack('/tabs/test-package');
         return;
       }
       //If dynamic attribute has been passed, we will store it on our local variable, so that we can use it on our html template

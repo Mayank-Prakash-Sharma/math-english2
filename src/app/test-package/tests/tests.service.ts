@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-// Import the data model for loadedExam1 object. It will have the same value as loadedExam variable (which holds the dynamic exam id passed from the previous page) of the .ts file. I am going to use this loadedExam1 object in some if checks in my fucntion ........ to display my exam specific test-packages. 
+// Import the data model for loadedExam1 object. It will have the same value as loadedExam variable (which holds the dynamic exam id passed from the previous page) of the .ts file. I am going to use this loadedExam1 object in my fucntion ........ to display my exam specific test-packages. 
 import { Exams } from '../test-package.model';
 
 //Import the essential modules to work with Firebase Firestore database
@@ -26,7 +26,7 @@ export class TestsService {
   constructor(private afs: AngularFirestore) { 
    }
 
-   //Set the values of the collection and the test packages within it based on what collection the user clicked in the previous page
+   //Set the values of the exam collection and the test packages within it based on what exam collection the user clicked in the previous page
    setPackages() {
     this.testPackageCollection = this.afs.collection<TestPackage>(this.loadedExam1.id);
     this.testPackages = this.testPackageCollection.snapshotChanges().pipe(
