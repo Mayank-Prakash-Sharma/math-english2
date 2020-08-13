@@ -15,6 +15,7 @@ import { map, take } from 'rxjs/operators';
 //Import the data model that defines the structure of our objects in Firestore Database
 import { Section } from './test.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +25,9 @@ export class TestService {
 
   private sectionCollection:AngularFirestoreCollection<Section>; //Will contain the reference to our Sections Collection
   private sections: Observable<Section[]>;  //Will contain all the data of our Section documents within our Sections Collection
+
+  // private questionsCollection:AngularFirestoreCollection<Question>; //Will contain the reference to our Questions Collection
+  // private questions: Observable<Question[]>;  //Will contain all the data of our Question documents within our Questions Collection
 
   constructor(private afs: AngularFirestore, private instructionsService: InstructionsService, private testsService: TestsService, private testPackageService: TestPackageService) { }
 
@@ -59,5 +63,36 @@ export class TestService {
      })
    );
  }
+
+ //Set the values of the questions collection and the questions within it based on what test the user clicked in the previous page
+//  setQuestions() {
+//     this.questionsCollection = this.afs.collection<TestPackage>(this.testsService.loadedExam1.id).doc(this.instructionsService.loadedPackageId1).collection<Test>('Tests').doc(this.loadedTest1).collection<Section>('Sections').doc('section1').collection<Question>('questions');
+//     this.questions = this.questionsCollection.snapshotChanges().pipe(
+//     map(questions => {
+//       return questions.map(question => {
+//         const data = question.payload.doc.data();  // Getting the data of each question
+//         const id = question.payload.doc.id;  // Getting the id of each question
+//         return { id, ...data };
+//       })
+//     })
+//   )
+
+//  }
+
+//    //To View the array of Question documents in the collection
+//    getQuestions(): Observable<Question[]> {
+//     return this.questions;
+//   }
+
+//  //To View the data in a particular Question document
+//  getQuestion(id: string): Observable<Question> {
+//    return this.questionsCollection.doc<Question>(id).valueChanges().pipe(
+//      take(1),
+//      map(tst => {
+//        tst.id = id;
+//        return tst;
+//      })
+//    );
+//  }
 
 }

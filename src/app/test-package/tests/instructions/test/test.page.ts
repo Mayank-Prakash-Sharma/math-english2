@@ -26,11 +26,19 @@ export class TestPage implements OnInit {
 
    //For storing the data of the dynamic subject Id passed from the previous page
    loadedTest: string;
+  //  sectionId: string;
   
   //To store the Observable received from Firebase
   private sections: Observable<Section[]>;
   private section: Test;
+  // private section1: Section;
 
+
+  //To store the Observable received from Firebase
+  // private questions: Observable<Question[]>;
+  // private question: Question;
+
+ 
   constructor(private route: ActivatedRoute, private navCtrl: NavController, private instructionsService: InstructionsService, private testService: TestService) { }
 
   ngOnInit() {
@@ -53,6 +61,23 @@ export class TestPage implements OnInit {
       }
       console.log("abrakadabra");
       console.log(this.testService.loadedTest1);
+
+      //  //Set the reference of the collection choosen by the user in the previous page
+      //  this.testService.setQuestions();
+      
+      //  //Store the observable received from Firebase Firestore in our local observable
+      //  this.questions = this.testService.getQuestions();
+
+      //  this.sectionId = 'section1';
+ 
+      //  if (this.sectionId) {
+      //   this.testService.getSection(this.sectionId).subscribe(section => {
+      //   this.section1 = section; });
+
+      //    this.testService.getQuestion('1').subscribe(question => {
+      //    this.question = question; 
+      //    });
+      //  }
 
   }
 

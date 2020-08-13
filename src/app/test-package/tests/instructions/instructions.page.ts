@@ -10,7 +10,7 @@ import { NavController } from '@ionic/angular';
 import { TestsService } from '../tests.service';
 import { TestPackage } from '../tests.model';
 
-// Import and inject Service having my packages and data model class
+// Import and inject Service having my tests and data model class
 import { InstructionsService } from './instructions.service';
 import { Test } from './instructions.model';
 

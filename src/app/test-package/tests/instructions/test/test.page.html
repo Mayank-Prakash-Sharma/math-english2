@@ -5,6 +5,21 @@
 </ion-header>
 
 <ion-content>
+  <!-- Side menu showcasing the number of questions of each section -->
+  <ion-grid *ngFor="let section of (sections | async)">   
+    <ion-row>
+      <ion-col size="4" size-sm="4" offset-sm="1" text-center>
+        <ion-list *ngFor="let item of section | keyvalue">
+          <ion-item *ngIf="item.key != 'Marks' && item.key != 'Penalty'"> 
+            <ion-button shape="round" size="small">{{item.key}}</ion-button>  
+            <!-- to access the value use item.value instead of item.key -->
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
   <!-- If there are sections -->
   <!-- We use async pipe because sections is an observable -->
   <ion-grid *ngIf="(sections | async)?.length > 0">
@@ -18,6 +33,7 @@
                 <p>{{ section.id }}</p>
                 <h2>{{ section.title }}</h2>
                 <p>{{ section.type }}</p>
+                <p>{{ section.Q1.option1 }}</p>
               </ion-label>
             </ion-item>
           </ion-list>
